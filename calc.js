@@ -23,8 +23,13 @@ function sum(stringOfNumbers){
             pendingNum = pendingNum + char;
         } else if (minus.includes(char) && acceptables.includes(nextI)){
             if (len > 0) {
-                nums.push(parseFloat(pendingNum));
-                pendingNum = char;
+                if (parseFloat(pendingNum) > 1000) {
+                    greaterThan1000.push(pendingNum);
+                    pendingNum = char;
+                } else {
+                    nums.push(parseFloat(pendingNum));
+                    pendingNum = char;
+                }
             } else {
                 pendingNum = char;
             }
